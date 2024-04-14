@@ -6,6 +6,7 @@ import icon from '../../resources/icon.png?asset'
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
+    frame: false,
     width: 900,
     height: 670,
     show: false,
@@ -33,6 +34,19 @@ function createWindow(): void {
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
+
+  ipcMain.on('maxMin', () => {
+    if(!mainWindow.isMaximized()){
+      mainWindow.maximize()
+    } else {
+      mainWindow.unmaximize()
+    }
+
+  })
+
+  ipcMain.on('collapse', () => {
+    mainWindow.minimize()
+  })
 }
 
 // This method will be called when Electron has finished
@@ -51,6 +65,8 @@ app.whenReady().then(() => {
 
   // IPC test
   ipcMain.on('ping', () => console.log('pong'))
+
+  ipcMain.on('close', () => app.quit())
 
   createWindow()
 

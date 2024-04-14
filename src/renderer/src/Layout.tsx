@@ -1,4 +1,4 @@
-import {AppShell} from '@mantine/core';
+import {AppShell, Title} from '@mantine/core';
 import {TopFrame} from "./components/Layout/TopFrame";
 import {MainNavBar} from "./components/Layout/MainNavBar";
 
@@ -22,7 +22,7 @@ export function Layout() {
           {/*    hiddenFrom="sm"*/}
           {/*    size="sm"*/}
           {/*/>*/}
-          <div>Logso</div>
+          <Title pl={4} pt={4} order={5}>Pandora Vault</Title>
           <div><TopFrame/></div>
         </div>
       </AppShell.Header>

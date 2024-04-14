@@ -8,10 +8,8 @@ import {Layout} from "./Layout";
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <MantineProvider>
+    <MantineProvider defaultColorScheme={"dark"}>
       <Layout/>
     </MantineProvider>
-    {/*<App />*/}
-    sadad
   </React.StrictMode>
 )
