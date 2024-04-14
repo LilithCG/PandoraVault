@@ -18,13 +18,15 @@
     "build:unpack": "npm run build && electron-builder --dir",
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "electron-vite build && electron-builder --mac",
-    "build:linux": "electron-vite build && electron-builder --linux"
+    "build:linux": "electron-vite build && electron-builder --linux",
+    "prisma:migrate": "npx prisma migrate dev --name init"
   },
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
     "@mantine/core": "^7.8.0",
     "@mantine/hooks": "^7.8.0",
+    "@prisma/client": "^5.12.1",
     "@tabler/icons-react": "^3.2.0",
     "electron-updater": "^6.1.7"
   },

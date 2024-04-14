@@ -1,8 +1,11 @@
-import { ElectronAPI } from '@electron-toolkit/preload'
+import {ElectronAPI} from '@electron-toolkit/preload'
+import {Prisma} from "@prisma/client";
 
 declare global {
   interface Window {
     electron: ElectronAPI
-    api: any
+    api: {
+      ping: () => Promise<Prisma.ProfileCreateInput>
+    }
   }
 }

@@ -8,7 +8,9 @@ export const MainNavBar = () => {
 
   return (
     <>
-      <NavLink leftSection={<IconHome size="1rem" stroke={1.5}/>} label="Главная" />
+      <NavLink leftSection={<IconHome size="1rem" stroke={1.5}/>} label="Главная"
+        onClick={() => window.api.ping().then(r => console.log(r))}
+      />
       <Divider label={"Хранилище"}/>
       <ScrollArea offsetScrollbars>
         <NavLink
