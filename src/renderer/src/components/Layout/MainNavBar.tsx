@@ -4,10 +4,11 @@ import {IconHome} from "@tabler/icons-react";
 const NAV_LINK_PADDING = 2
 
 export const MainNavBar = () => {
+
+
   return (
     <>
-
-      <NavLink leftSection={<IconHome size="1rem" stroke={1.5}/>} label="Главная" href="#required-for-focus"/>
+      <NavLink leftSection={<IconHome size="1rem" stroke={1.5}/>} label="Главная" />
       <Divider label={"Хранилище"}/>
       <ScrollArea offsetScrollbars>
         <NavLink

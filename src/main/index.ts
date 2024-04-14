@@ -47,6 +47,9 @@ function createWindow(): void {
   ipcMain.on('collapse', () => {
     mainWindow.minimize()
   })
+
+  ipcMain.handle('ping', () => "pong")
+
 }
 
 // This method will be called when Electron has finished
@@ -64,7 +67,6 @@ app.whenReady().then(() => {
   })
 
   // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
 
   ipcMain.on('close', () => app.quit())
 
