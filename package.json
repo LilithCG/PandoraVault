@@ -19,7 +19,9 @@
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "electron-vite build && electron-builder --mac",
     "build:linux": "electron-vite build && electron-builder --linux",
-    "prisma:migrate": "npx prisma migrate dev --name init"
+    "prisma:migrate": "npx prisma migrate dev --name init",
+    "prisma:generate": "npx prisma generate",
+    "db:studio": "npx prisma studio"
   },
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.0",
@@ -28,6 +30,7 @@
     "@mantine/hooks": "^7.8.0",
     "@prisma/client": "^5.12.1",
     "@tabler/icons-react": "^3.2.0",
+    "@tanstack/react-query": "^5.29.2",
     "electron-updater": "^6.1.7"
   },
   "devDependencies": {

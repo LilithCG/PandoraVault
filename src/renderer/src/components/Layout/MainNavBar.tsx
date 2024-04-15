@@ -1,39 +1,25 @@
 import {Divider, NavLink, ScrollArea} from "@mantine/core";
 import {IconHome} from "@tabler/icons-react";
+import {FolderHooks} from "../../hooks/FolderHooks";
+import useFindMany = FolderHooks.useFindMany;
+import {Tree} from "./folderTree/Tree";
 
-const NAV_LINK_PADDING = 2
 
 export const MainNavBar = () => {
+  const {data} = useFindMany()
+
+  console.log(data)
 
 
   return (
     <>
       <NavLink leftSection={<IconHome size="1rem" stroke={1.5}/>} label="Главная"
-        onClick={() => window.api.ping().then(r => console.log(r))}
+        onClick={() => window.api.link.findMany().then(r => console.log(r))}
       />
       <Divider label={"Хранилище"}/>
-      <ScrollArea offsetScrollbars>
-        <NavLink
-          href="#required-for-focus"
-          label="раз"
-          p={NAV_LINK_PADDING}
-          childrenOffset={4}
-        >
-          <NavLink href="#required-for-focus" label="First child link" p={NAV_LINK_PADDING}/>
-          <NavLink label="Second child link" href="#required-for-focus" p={NAV_LINK_PADDING}/>
-          <NavLink label="Nested parent link" p={NAV_LINK_PADDING} href="#required-for-focus"/>
-        </NavLink>
-        <NavLink label="бом" href="#required-for-focus" p={NAV_LINK_PADDING}/>
-        <NavLink label="бом" href="#required-for-focus" p={NAV_LINK_PADDING}/>
-        <NavLink label="бом" href="#required-for-focus" p={NAV_LINK_PADDING}/>
-        <NavLink label="бом" href="#required-for-focus" p={NAV_LINK_PADDING}/>
-        <NavLink label="бом" href="#required-for-focus" p={NAV_LINK_PADDING}/>
-        <NavLink label="бом" href="#required-for-focus" p={NAV_LINK_PADDING}/>
-        <NavLink label="бом" href="#required-for-focus" p={NAV_LINK_PADDING}/>
-        <NavLink label="бом" href="#required-for-focus" p={NAV_LINK_PADDING}/>
-        <NavLink label="бом" href="#required-for-focus" p={NAV_LINK_PADDING}/>
-        <NavLink label="бом" href="#required-for-focus" p={NAV_LINK_PADDING}/>
-      </ScrollArea>
+      {<ScrollArea offsetScrollbars>
+        {!!data && <Tree data={data}/>}
+      </ScrollArea>}
     </>
   )
 }

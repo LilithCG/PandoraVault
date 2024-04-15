@@ -10,7 +10,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Profile {
-  id     Int     @id @default(autoincrement())
-  bio    String?
+model Setting {
+  id    Int     @id @default(autoincrement())
+  name  String
+  value String?
+}
+
+model Folder {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  parent      Folder?  @relation("parentFolder", fields: [parentId], references: [id])
+  parentId    Int?
+  links       Link[]
+  children    Folder[] @relation("parentFolder")
+}
+
+model Link {
+  id          Int        @id @default(autoincrement())
+  name        String
+  url         String
+  description String?
+  folder      Folder?    @relation(fields: [folderId], references: [id])
+  folderId    Int?
+  LinkTags    LinkTags[]
+}
+
+model Tag {
+  id       Int        @id @default(autoincrement())
+  name     String
+  LinkTags LinkTags[]
+}
+
+model LinkTags {
+  id     Int  @id @default(autoincrement())
+  link   Link @relation(fields: [linkId], references: [id])
+  tag    Tag  @relation(fields: [tagId], references: [id])
+  linkId Int
+  tagId  Int
 }

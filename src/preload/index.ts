@@ -1,14 +1,8 @@
 import {contextBridge} from 'electron'
 import {electronAPI} from '@electron-toolkit/preload'
-import {PrismaClient} from "@prisma/client";
+import {api} from "../main/server/api";
 
-// Custom APIs for renderer
 
-const prisma = new PrismaClient()
-
-const api = {
-  ping: () => prisma.profile.findMany().then(r => r)
-}
 
 // Use `contextBridge` APIs to expose Electron APIs to
 // renderer only if context isolation is enabled, otherwise
