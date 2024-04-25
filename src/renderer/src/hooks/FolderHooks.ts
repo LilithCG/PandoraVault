@@ -14,6 +14,15 @@ export namespace FolderHooks {
       }
     })
   }
+
+  export function useFindById(id: number) {
+    return useQuery({
+      queryKey: ['folders', String(id)],
+      queryFn: () => {
+        return window.api.folder.findById(id)
+      }
+    })
+  }
 }
 
 async function findToTree(folders: FolderWithChildren[]): Promise<FolderTreeNode[]> {
@@ -24,13 +33,6 @@ async function findToTree(folders: FolderWithChildren[]): Promise<FolderTreeNode
       children: []
     }))
   }))
-
-  // async function getChildren(folders: FolderWithChildren[]) {
-  //   folders.forEach(child => {
-  //
-  //   })
-  // }
-
 
 
   return tree

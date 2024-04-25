@@ -1,6 +1,7 @@
 import {AppShell, Title} from '@mantine/core';
 import {TopFrame} from "./components/Layout/TopFrame";
 import {MainNavBar} from "./components/Layout/MainNavBar";
+import {Outlet} from "react-router-dom";
 
 export function Layout() {
 
@@ -31,7 +32,7 @@ export function Layout() {
         <MainNavBar/>
       </AppShell.Navbar>
       <AppShell.Main>
-        hello
+        <Outlet/>
       </AppShell.Main>
     </AppShell>
   );

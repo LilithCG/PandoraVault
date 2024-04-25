@@ -1,9 +1,9 @@
 import {Prisma, PrismaPromise} from "@prisma/client";
-import {DefaultArgs, GetFindResult} from "@prisma/client/runtime/library";
+import {DefaultArgs, GetFindResult, GetResult} from "@prisma/client/runtime/library";
 import db from "../database";
 
 export interface IFolder {
-  findChildrenByParentId: (id: number) => PrismaPromise<GetFindResult<Prisma.$FolderPayload<DefaultArgs>, { include: { children: boolean }; where: { parentId: number } }>[]>;
+  findById: (id: number) => Promise<GetResult<Prisma.$FolderPayload<DefaultArgs>, { include: { links: boolean }; where: { id: number } }, "findFirst">> & {};
   findMany: () => PrismaPromise<GetFindResult<Prisma.$FolderPayload<DefaultArgs>, { include: { children: boolean }; where: { parentId: null } }>[]>
 }
 
@@ -17,12 +17,12 @@ export const FolderController: IFolder = {
       parentId: null
     }
   }),
-  findChildrenByParentId: (id: number) => db.folder.findMany({
+  findById: (id: number) => db.folder.findFirst({
     include: {
-      children: true
+      links: true
     },
     where: {
-      parentId: id
+      id: id
     }
-  })
+  }).then(r => r)
 }
