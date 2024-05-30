@@ -1,6 +1,6 @@
-import {app, shell, BrowserWindow, ipcMain} from 'electron'
-import {join} from 'path'
-import {electronApp, optimizer, is} from '@electron-toolkit/utils'
+import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { join } from 'path'
+import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 
 function createWindow(): void {
@@ -36,20 +36,18 @@ function createWindow(): void {
   }
 
   ipcMain.on('maxMin', () => {
-    if(!mainWindow.isMaximized()){
+    if (!mainWindow.isMaximized()) {
       mainWindow.maximize()
     } else {
       mainWindow.unmaximize()
     }
-
   })
 
   ipcMain.on('collapse', () => {
     mainWindow.minimize()
   })
 
-  ipcMain.handle('ping', () => "pong")
-
+  ipcMain.handle('ping', () => 'pong')
 }
 
 // This method will be called when Electron has finished

@@ -1,5 +1,5 @@
-import {ILink, LinkController} from "./controller/LinkController";
-import {FolderController, IFolder} from "./controller/FolderController";
+import { ILink, LinkController } from './controller/LinkController'
+import { FolderController, IFolder } from './controller/FolderController'
 
 export interface PrismaAPI {
   link: ILink
